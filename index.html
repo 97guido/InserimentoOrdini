@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+<script type="text/javascript" language="javascript" src="elencoCiboBevande.js"></script>
+<script type="text/javascript" language="javascript" src="main.js"></script>
+<head>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div id="loading_div" style="width: 100%; height: 100vh; background: #969696; display: none; padding-top: 100%; margin: 0;" >
+        <h1>Invio ordine...</h1>
+    </div>
+    <div id="main_div" class="text-center;">
+
+        
+
+        <div style="width: 100%; height: 5%;" >
+            <!-- <h1 id="topText" class="display-4" style="width: 40%; padding: 2%;margin-left: 30%;">Festa di Falciano 2024</h1> -->
+        </div>
+
+        <div style="width: 100%;" >
+
+            <div id="div_bere">
+                <!-- <h2>Bar</h2> -->
+                <h2 id="totBox" style="background: #e2e612; margin-left: 10%; margin-top: 5%; margin-bottom: 5%; width: 40%; text-align: center; padding-top: 2%; padding-bottom: 2%; border: black; border-style: solid; display: inline-block;">Totale € 0,00</h1>
+                <input type="button" value="Annulla" onclick="azzeraCampi()" style="background: #b81818; width: 22%; margin-left: 18%; padding: 2%; text-align: center; font-size: 40px; margin-top: 5%; border-radius: 40%; border-style: none; display: inline-block;"/>
+        
+            </div>
+
+            <div id="div_mangiare" style="display: none;">
+                <h2>Mangiare</h2>
+            </div>
+        </div>
+
+        <!-- <input id="num_pagato" type="number" placeholder="Pagato €" style="background: #12e6b8; margin-left: 30%; margin-top: 2%; width: 40%; text-align: center; padding: 0%; padding-top: 2%; padding-bottom: 2%; margin-bottom: 0%; margin-top: 5%; border: black; border-style: solid;" oninput="calcolaResto()"/>
+        <h2 id="restoBox" style="background: #1275e6; margin-left: 30%; margin-top: 2%; width: 40%; text-align: center; padding-top: 2%; padding-bottom: 2%; margin-bottom: 0%; margin-top: 0%; border: black; border-style: solid;">Resto € 0</h1> -->
+        <input type="button" value="Conferma ordine" onclick="confermaOrdine()" style="background: #18b83b; width: 100%; text-align: center; font-size: 40px; margin-top: 5%;"/>
+    </div>
+
+    <script>
+        window.onload = init();
+    </script>
+
+</html>
+</body>
