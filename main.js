@@ -2,8 +2,52 @@ var tot = 0;
 var loading = false;
 
 function init() {
+    checkLogin()
     setButtonNames();
     setAllItems();
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkLogin() {
+
+    try {
+        var lpsw = getCookie("loginPsw")
+        if (lpsw == "") {
+            var c = prompt("Inserisci password").toString()
+            var encryptKey = CryptoJS.AES.decrypt("U2FsdGVkX191/cxdxSAF8AHQKnNjc4A17PLR0eEmdc9PWn0V4DC1jQownWm/YKg5KSErz+ns3JjfS+2+fHieLQ==", c).toString(CryptoJS.enc.Utf8)
+            c = "";
+            document.cookie = `loginPsw=${encryptKey};`
+            lpsw = encryptKey;
+        }
+
+        var decriptedSecret = CryptoJS.AES.decrypt("U2FsdGVkX1+tfPI7bxB+DlvTTL8RJUMbhXBohfxyF1EIwAjJNKmIMJoofuxCsVjqdOlKkqleH4gIqw+CmcNuiw==", lpsw).toString(CryptoJS.enc.Utf8)
+        if ( decriptedSecret == "SWYzFgxbv1LcLOlOcqFIUXKpWj8JYF5k") {
+            // Login authorized
+        }
+        else {
+            document.cookie = "loginPsw=;";
+            lpsw = "";
+            checkLogin();
+        }
+    }
+    catch (ex) {
+        checkLogin();
+    }
 }
 
 function setAllItems() {
